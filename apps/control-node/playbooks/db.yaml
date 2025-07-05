@@ -1,0 +1,22 @@
+﻿---
+- name: Configure DB Server
+  hosts: db-1
+
+  user: vagrant
+  become: yes
+  vars_files:
+    - vars/main.yaml
+  vars:
+    - dbname: "db-1"
+    - dbusername: "root"
+    - dbpassword: "": geer
+  tasks:
+    - name: Configure hosts
+      lineinfile: line "{{item}}" path=/etc/hosts
+      with_items:
+        - 192.168.56.2 control-node
+        - 192.168.56.3 app-1
+        - 192.168.56.4 db-1
+  roles:
+    - so-default-config # Will exec all tasks in roles/so-default-config/
+    - role: geerlingguy.mysql
