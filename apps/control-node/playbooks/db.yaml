@@ -9,7 +9,7 @@
   vars:
     - dbname: "db-1"
     - dbusername: "root"
-    - dbpassword: "": geer
+    - dbpassword: "root"
   tasks:
     - name: Configure hosts
       lineinfile: line "{{item}}" path=/etc/hosts

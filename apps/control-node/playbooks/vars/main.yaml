@@ -1,0 +1,10 @@
+﻿mysql_root_password: pwd
+mysql_databases:
+  - name: notes
+    encoding: latin1
+    collation: latin1_general_ci
+mysql_users:
+  - name: notesapp
+    host: "%" # allow any host
+    passowrd: pwd
+    priv: "notes.*:ALL" # access any objects in notes
